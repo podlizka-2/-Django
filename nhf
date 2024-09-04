@@ -1,0 +1,20 @@
+# ID 116346090
+def minimum_platforms(robots, limits) -> int:
+    left_pointer = 0 # левый указатель - первый элемент списка
+    right_pointer = len(robots) - 1 # правый указатель - последний элемент списка
+    count = 0 # количество платформ
+
+    while left_pointer <= right_pointer: # пока первый элемент меньше последнего, складывай значения
+        max_count = robots[left_pointer] + robots[right_pointer]
+        if max_count <= limits:
+            left_pointer += 1
+        count += 1
+        right_pointer -=1
+    return count
+
+
+
+robots = sorted([int(x) for x in input().split()])
+limits = int(input())
+result = minimum_platforms(robots, limits)
+print(result)
